@@ -1,0 +1,58 @@
+{% extends 'plugin/header.html' %}
+{% block head %}
+    <title>影视</title>
+    <% for(let idx in htmlWebpackPlugin.files.js){ %>
+    <script src="<%= htmlWebpackPlugin.files.js[idx] %>"></script>
+    <% } %>
+    <% for(let idx in htmlWebpackPlugin.files.css){ %>
+    <link href="<%= htmlWebpackPlugin.files.css[idx] %>" rel="stylesheet"/>
+    <% } %>
+{% endblock %}
+
+{% block content %}
+    <img class="bg" src="/static/img/film_bg.jpg"/>
+    <the-head></the-head>
+    <div class="film top">
+        <div class="wrap">
+            <section class="info">
+                <div class="posters">
+                    <div class="outer">
+                        <div class="gradient" :style="{left: gradient_left+'px'}"></div>
+                        <div class="inner" :style="{left: inner_left+'px'}">
+                            <div class="contain" v-for="i in multi_contain">
+                                <img v-for="item in info.posters?JSON.parse(info.posters):[]" :key="item" :src="'/static/img/film/'+item"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <transition name="bounce-fade">
+                    <div class="detail" v-show="fetched_info">
+                        <div class="base-info">
+                            <div class="cover">
+
+                            </div>
+                            <div class="info">
+
+                            </div>
+                        </div>
+                        <div class="expl">
+
+                        </div>
+                    </div>
+                </transition>
+            </section>
+            <transition name="bounce-fade">
+                <section class="the-history" v-show="fetched_list">
+                    <span class="history-ico">历史</span>
+                    <div class="list">
+                        <div v-for="item in history.list">
+
+                        </div>
+                    </div>
+                    <turn-page @event="turn_page" :count="history.count" :now="now" :show_count="5"
+                               :onepage_showcount="onePage_showCount"></turn-page>
+                </section>
+            </transition>
+        </div>
+    </div>
+{% endblock %}

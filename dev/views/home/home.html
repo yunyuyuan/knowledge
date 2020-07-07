@@ -1,0 +1,22 @@
+{% extends 'plugin/header.html' %}
+{% block head %}
+    <title>主页</title>
+    <% for(let idx in htmlWebpackPlugin.files.js){ %>
+    <script src="<%= htmlWebpackPlugin.files.js[idx] %>"></script>
+    <% } %>
+    <% for(let idx in htmlWebpackPlugin.files.css){ %>
+    <link href="<%= htmlWebpackPlugin.files.css[idx] %>" rel="stylesheet"/>
+    <% } %>
+{% endblock %}
+
+{% block content %}
+    <img class="bg" src="/static/img/home_bg.jpg"/>
+    <transition name="bounce-fade">
+        <div class="home" v-show="old_tip">
+            <div class="tip">{{ tip||old_tip }}</div>
+            <div class="menu-btn">
+                <a v-for="item in btns" :key="item[2]" :href="'/'+item[2]" :class="item[2]" @mouseenter="enter(item[1])" @mouseleave="leave">{{ item[0] }}</a>
+            </div>
+        </div>
+    </transition>
+{% endblock %}

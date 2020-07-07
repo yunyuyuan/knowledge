@@ -1,0 +1,118 @@
+@import "../public";
+#app{
+  >.words{
+    min-width: 35rem;
+    >.body{
+      max-width: 65rem;
+      width: 100%;
+      margin: 0 auto;
+      flex-direction: column;
+      >.latest{
+        margin-top: 2rem;
+        width: 95%;
+        flex-direction: column;
+        position: relative;
+        >.words{
+          width: 90%;
+          flex-direction: column;
+          >span{
+            width: calc(100% - 1.6rem);
+            padding: 0.8rem 1rem;
+            border-radius: 0.4rem;
+            background: rgba(33, 33, 33, 0.9);
+            font-size: 1.3rem;
+            color: white;
+            box-shadow: 0 0.2rem 1rem rgba(255, 255, 255, 0.3);
+            word-break: break-word;
+          }
+          >.-vue--play-sound{
+            margin: 0.3rem 0 0 auto;
+          }
+        }
+        >.expl{
+          margin-top: 2rem;
+          width: 100%;
+          position: relative;
+          &:before{
+            content: '释义';
+            font-size: 0.7rem;
+            padding: 0.15rem 0.5rem;
+            background: #ffd58d;
+            border: 1px solid #ff9f41;
+            border-radius: 0.2rem;
+            position: absolute;
+            display: block;
+            top: 0;
+            left: 1rem;
+            transform: translateY(-50%);
+          }
+          >span{
+            width: 100%;
+            font-size: 0.88rem;
+            border: 1px solid #b1b1b1;
+            border-radius: 0.3rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.97);
+          }
+        }
+        >.time{
+          margin: 0.5rem 0 0 auto;
+          >span{
+            border-radius: 0.2rem;
+            padding: 0.3rem 0.8rem;
+            font-size: 0.7rem;
+            &:before{
+              color: #343434;
+              margin-right: 0.4rem;
+              font-size: 1.1em;
+            }
+            &.up{
+              margin-right: 0.5rem;
+              background: #87ffeb;
+              &:before{
+                content: '上传';
+              }
+            }
+            &.mdf{
+              background: #de91ff;
+              &:before{
+                content: '修改';
+              }
+            }
+          }
+        }
+      }
+      >.the-history{
+        >.list{
+          width: 100%;
+          flex-direction: column;
+          >a{
+            margin-bottom: 1.6rem;
+            width: 100%;
+            text-decoration: none;
+            color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            &:hover{
+              >span{
+                color: red;
+                border-color: #ff7925;
+              }
+            }
+            >span{
+              padding: 0.8rem;
+              background: #dcedff;
+              width: 90%;
+              border-radius: 0.3rem;
+              font-size: 0.95rem;
+              @include text-overflow(2);
+              border: 1px solid #dbdbdb;
+              box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
+            }
+          }
+        }
+      }
+    }
+  }
+}

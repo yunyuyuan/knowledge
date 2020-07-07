@@ -1,0 +1,37 @@
+{% extends 'plugin/header.html' %}
+{% block head %}
+    <title>后台</title>
+    <% for(let idx in htmlWebpackPlugin.files.js){ %>
+    <script src="<%= htmlWebpackPlugin.files.js[idx] %>"></script>
+    <% } %>
+    <% for(let idx in htmlWebpackPlugin.files.css){ %>
+    <link href="<%= htmlWebpackPlugin.files.css[idx] %>" rel="stylesheet"/>
+    <% } %>
+{% endblock %}
+
+{% block content %}
+    <img class="bg" src="/static/img/b_bg.jpg"/>
+    {% if not login %}
+        <div class="login">
+            <span>输入后台密码</span>
+            <div class="-input">
+                <span></span>
+                <input v-model.lazy="pwd" @keyup.enter="login" type="password"/>
+            </div>
+            <button @click="login">登录</button>
+        </div>
+    {% else %}
+        <div class="menu">
+            <div class="bg"></div>
+            <router-link :to="{name: 'config'}" class="config">配置</router-link>
+            <router-link :to="{name: 'words'}" class="words">句子</router-link>
+            <router-link :to="{name: 'book'}" class="book">书籍</router-link>
+            <router-link :to="{name: 'film'}" class="film">影视</router-link>
+            <router-link :to="{name: 'examine'}" class="examine">审核</router-link>
+        </div>
+        <div class="content">
+            <b class="fixed-head" :class="at.name">{{ at.s }}</b>
+            <router-view></router-view>
+        </div>
+    {% endif %}
+{% endblock %}

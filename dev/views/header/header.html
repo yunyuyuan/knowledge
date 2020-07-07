@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <% for(let idx in htmlWebpackPlugin.files.js){ %>
+    <script src="<%= htmlWebpackPlugin.files.js[idx] %>"></script>
+    <% } %>
+    <% for(let idx in htmlWebpackPlugin.files.css){ %>
+    <link href="<%= htmlWebpackPlugin.files.css[idx] %>" rel="stylesheet"/>
+    <% } %>
+    {% block head %}
+    {% endblock %}
+</head>
+<body>
+    <div id="cape"></div>
+    <div id="head-pendant">
+        <popup ref="popup"></popup>
+        <loading ref="loading"></loading>
+    </div>
+    <div id="app" v-cloak>
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>

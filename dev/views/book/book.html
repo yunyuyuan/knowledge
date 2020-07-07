@@ -1,0 +1,83 @@
+{% extends 'plugin/header.html' %}
+{% block head %}
+    <title>书籍</title>
+    <% for(let idx in htmlWebpackPlugin.files.js){ %>
+    <script src="<%= htmlWebpackPlugin.files.js[idx] %>"></script>
+    <% } %>
+    <% for(let idx in htmlWebpackPlugin.files.css){ %>
+    <link href="<%= htmlWebpackPlugin.files.css[idx] %>" rel="stylesheet"/>
+    <% } %>
+{% endblock %}
+
+{% block content %}
+    <img class="bg" src="/static/img/book_bg.jpg"/>
+    <the-head></the-head>
+    <div class="book top">
+        <div class="body">
+            <transition name="bounce-fade">
+                <section class="latest" v-show="fetched_info">
+                    <div class="name">
+                        <span>{{ info.nm }}</span>
+                    </div>
+                    <div class="cover">
+                        <div class="book">
+                            <div class="top"></div>
+                            <div class="spine">
+                                <b>{{ info.nm }}</b>
+                            </div>
+                            <div class="cov">
+                                <img :src="'/static/img/book/'+info.cover"/>
+                            </div>
+                            <div class="shadow"></div>
+                        </div>
+                        <div class="info">
+                            <a>{{ info.author }}</a>
+                            <p>{{ info.summary }}</p>
+                        </div>
+                    </div>
+                    <div class="info">
+                        <div v-for="(item,idx) in (info.info?JSON.parse(info.info):[])" :key="idx">
+                            <a :class="item.key">{{ item.key }}</a>
+                            <span>{{ item.val }}</span>
+                        </div>
+                    </div>
+                    <div class="expl">
+                        <div class="left"></div>
+                        <div class="right"></div>
+                        <span>{{ info.expl }}</span>
+                    </div>
+                    <div class="c-m-time">
+                        <span class="up">{{ info.c_tm }}</span>
+                        <span class="mdf">{{ info.m_tm }}</span>
+                    </div>
+                </section>
+            </transition>
+            <transition name="bounce-fade">
+                <section class="the-history" v-show="fetched_list">
+                    <span class="history-ico">历史</span>
+                    <div class="list">
+                        <a v-for="item in history.list" :key="item.id" :href="'?id='+item.id" :title="item.name"
+                           onmouseenter="this.classList.remove('not-hover');this.classList.add('hover')"
+                           onmouseleave="this.classList.remove('hover');this.classList.add('not-hover')">
+                            <div class="cover"><img :src="'/static/img/book/'+item.cover"/></div>
+                            <div class="page"></div>
+                            <div class="page_front_edge"
+                                 :style="{width: tan_110*item.weight+'rem'}"></div>
+                            <div class="page_top_edge"
+                                 :style="{height: item.weight+'rem',transform: `skew(110deg, 15deg) translateX(9%) translateY(${-item.weight+0.23+'rem'})`}"></div>
+                            <div class="backcover"
+                                 :style="{marginLeft: tan_110*item.weight+0.025+'rem',marginTop: -0.025-item.weight+'rem'}"></div>
+                            <div class="spine"
+                                 :style="{width: tan_110*item.weight+'rem'}"></div>
+                            <div class="shadow"
+                                 :style="{marginTop: 9.7-item.weight+'rem',marginLeft: tan_110*item.weight+'rem'}"></div>
+                            <div class="name">{{ item.nm }}</div>
+                        </a>
+                    </div>
+                    <turn-page @event="turn_page" :count="history.count" :now="now" :show_count="5"
+                               :onepage_showcount="onePage_showCount"></turn-page>
+                </section>
+            </transition>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,98 @@
+@import "views/public";
+
+@each $font in 'iconfont'{
+  @font-face {
+    font-family: $font;
+    src: url('/static/font/#{$font}/#{$font}.eot'); /* IE9*/
+    src: local('?'),
+    url('/static/font/#{$font}/#{$font}?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('/static/font/#{$font}/#{$font}.woff2') format('woff2'), /* chrome、firefox */
+    url('/static/font/#{$font}/#{$font}.woff') format('woff'), /* chrome、firefox */
+    url('/static/font/#{$font}/#{$font}.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('/static/font/#{$font}/#{$font}.svg##{$font}') format('svg'); /* iOS 4.1- */
+  }
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+html, body{
+  font-size: 16px;
+  width: 100%;
+  height: 100%;
+}
+
+div, section{
+  display: flex;
+  align-items: center;
+}
+
+input,textarea{
+  outline: none;
+  resize: none;
+  border: 1px solid gray;
+  border-radius: 0.2rem;
+}
+
+button{
+  outline: none;
+  cursor: pointer;
+  border: none;
+  padding: 0.3rem 0.8rem;
+  transition: all .15s linear;
+  &:disabled{
+    cursor: not-allowed;
+  }
+}
+
+*[v-cloak]{
+  display: none;
+}
+
+#cape{
+  position: fixed;
+  z-index: $cape-index;
+  width: 100%;
+  height: 100%;
+  background: rgba(88, 88, 88, 0.4);
+}
+
+#app{
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  >img.bg{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: $bg-img-index;
+  }
+}
+
+
+@keyframes spin {
+    0%{
+        transform: rotate(0);
+    }100%{
+        transform: rotate(-360deg);
+     }
+}
+.bounce-fade-enter-active{
+    transition: opacity .25s linear,top .25s linear;
+}
+.bounce-fade-enter{
+    top: 1rem;
+    opacity: 0.3;
+}
+.bounce-fade-enter-to{
+    top: 0;
+    opacity: 1;
+}

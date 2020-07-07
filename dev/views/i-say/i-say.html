@@ -1,0 +1,14 @@
+{% extends 'plugin/header.html' %}
+{% block head %}
+    <title>我说</title>
+    <% for(let idx in htmlWebpackPlugin.files.js){ %>
+    <script src="<%= htmlWebpackPlugin.files.js[idx] %>"></script>
+    <% } %>
+    <% for(let idx in htmlWebpackPlugin.files.css){ %>
+    <link href="<%= htmlWebpackPlugin.files.css[idx] %>" rel="stylesheet"/>
+    <% } %>
+{% endblock %}
+
+{% block content %}
+    <img class="bg" src="/static/img/b_bg.jpg"/>
+{% endblock %}

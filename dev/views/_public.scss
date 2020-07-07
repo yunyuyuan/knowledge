@@ -1,0 +1,59 @@
+@mixin text-overflow($line: 1){
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $line;
+  word-break: break-all;
+}
+
+$--iconfont: 'iconfont';
+
+$--i-examine: '\e041';
+$--i-actors: '\e040';
+$--i-director: '\e039';
+$--i-film-name: '\e038';
+$--i-writer: '\e036';
+$--i-pc: '\e035';
+$--i-hand: '\e034';
+$--i-about: '\e032';
+$--i-quote: '\e031';
+$--i-feather: '\e030';
+$--i-upload: '\e029';
+$--i-modify: '\e028';
+$--i-page-num: '\e027';
+$--i-publisher: '\e026';
+$--i-book-name: '\e025';
+$--i-barcode: '\e024';
+$--i-write-time: '\e023';
+$--i-translate: '\e022';
+$--i-del: '\e021';
+$--i-ellipsis: '\e020';
+$--i-history: '\e019';
+$--i-tri: '\e017';
+$--i-sound: '\e016';
+$--i-back: '\e015';
+$--i-add: '\e014';
+$--i-search: '\e013';
+$--i-config: '\e012';
+$--i-running: '\e011';
+$--i-submit: '\e010';
+$--i-not-allow: '\e009';
+$--i-pwd: '\e008';
+$--i-warn: '\e007';
+$--i-err: '\e006';
+$--i-suc: '\e005';
+$--i-close: '\e004';
+$--i-book: '\e003';
+$--i-film: '\e002';
+$--i-words: '\e001';
+
+$head-height: 3rem;
+$head-index: 99;
+
+$cape-index: 0;
+$bg-img-index: -1;
+$backstage-menu-index: 99;
+
+$loading-index: 101;
+$popup-index: 100;

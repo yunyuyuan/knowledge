@@ -1,0 +1,45 @@
+{% extends 'plugin/header.html' %}
+{% block head %}
+    <title>句子</title>
+    <% for(let idx in htmlWebpackPlugin.files.js){ %>
+    <script src="<%= htmlWebpackPlugin.files.js[idx] %>"></script>
+    <% } %>
+    <% for(let idx in htmlWebpackPlugin.files.css){ %>
+    <link href="<%= htmlWebpackPlugin.files.css[idx] %>" rel="stylesheet"/>
+    <% } %>
+{% endblock %}
+
+{% block content %}
+    <img class="bg" src="/static/img/words_bg.jpg"/>
+    <the-head></the-head>
+    <div class="words top">
+        <div class="body">
+            <transition name="bounce-fade">
+                <section class="latest" v-show="fetched_info">
+                    <div class="words">
+                        <span>{{ info.nm }}</span>
+                        <play-sound :src="'/static/mp3/'+info.sound" :size="1.1"></play-sound>
+                    </div>
+                    <div class="expl">
+                        <span>{{ info.expl }}</span>
+                    </div>
+                    <div class="c-m-time">
+                        <span class="up">{{ info.c_tm }}</span>
+                        <span class="mdf">{{ info.m_tm }}</span>
+                    </div>
+                </section>
+            </transition>
+            <transition name="bounce-fade">
+                <section class="the-history" v-show="fetched_list">
+                    <span class="history-ico">历史</span>
+                    <div class="list">
+                        <a v-for="item in history.list" :key="item.id" :href="'?id='+item.id">
+                            <span>{{ item.nm }}</span>
+                        </a>
+                    </div>
+                    <turn-page @event="turn_page" :count="history.count" :now="page" :show_count="5" :onepage_showcount="onePage_showCount"></turn-page>
+                </section>
+            </transition>
+        </div>
+    </div>
+{% endblock %}

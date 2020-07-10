@@ -1,15 +1,22 @@
+@import "views/public";
 #app{
   > .film{
+    max-width: 70rem;
     > .wrap{
       margin: 0 auto;
       flex-direction: column;
       > .info{
+        flex-direction: column;
         > .posters{
           width: 60rem;
           height: 16rem;
           position: relative;
           padding: 0 0.8rem;
           background: black;
+          @include phone{
+            width: calc(100% - 1.6rem);
+            height: 10rem;
+          }
           > .outer{
             width: calc(100% - 1.6rem);
             height: 100%;
@@ -37,18 +44,246 @@
                   height: 100%;
                   object-fit: contain;
                   margin: 0 0.5rem;
+                  cursor: zoom-in;
                 }
               }
             }
           }
         }
         > .detail{
+          width: 100%;
+          margin: 1rem 0;
+          flex-direction: column;
+          > .base-info{
+            width: 100%;
+            @include phone{
+              flex-direction: column;
+            }
+            > .cover{
+              width: calc(45% - 2rem);
+              margin: 0 auto;
+              padding: 1rem;
+              flex-direction: column;
+              @include phone{
+                width: calc(100% - 2rem);
+                margin: 0 0 1rem 0;
+              }
+              >b{
+                font-size: 1.15rem;
+                background: #252525;
+                color: white;
+                padding: 0.6rem 1rem;
+                border-radius: 0.25rem;
+              }
+              > img{
+                margin-top: 0.4rem;
+                width: calc(100% - 2rem);
+                object-fit: contain;
+                cursor: zoom-in;
+              }
+              >.summary{
+                width: calc(100% - 2rem);
+                padding: 1rem;
+                background: white;
+                position: relative;
+                > span{
+                  font-size: 0.88rem;
+                  @include text-overflow(6);
+                  &:before{
+                    font-family: $--iconfont;
+                    content: $--i-quote;
+                    color: #6c04ff;
+                    font-size: 1.4rem;
+                    margin-right: 0.6rem;
+                  }
+                }
+                > button{
+                  position: absolute;
+                  right: 1rem;
+                  bottom: 1rem;
+                  background: #b051ff;
+                  color: white;
+                  height: 1.2rem;
+                  padding: 0 0.8rem;
+                  font-size: 0.75rem;
+                  &:before{
+                    width: 4rem;
+                    height: 100%;
+                    position: absolute;
+                    left: -4rem;
+                    top: 0;
+                    content: '';
+                    background: linear-gradient(to right, #ffffff00, white);
+                  }
+                }
+              }
+            }
+            > .info{
+              width: 50%;
+              min-height: 15rem;
+              flex-direction: column;
+              background: #212121;
+              border-radius: 0.25rem;
+              padding: 0.4rem 0 0.8rem 0;
+              @include phone{
+                width: 100%;
+              }
+              > div{
+                width: 95%;
+                margin: 0 auto;
+                padding: 0.8rem 0 0.4rem 0;
+                justify-content: flex-start;
+                border-bottom: 1px dashed #8080807d;
+                > a{
+                  background: white;
+                  color: black;
+                  font-size: 0.84rem;
+                  padding: 0.24rem 0.48rem;
+                  border-radius: 0.3rem;
+                  word-break: break-all;
+                  width: 6rem;
+                  flex-shrink: 0;
+                  display: flex;
+                  align-items: center;
+                  &:before{
+                    font-family: $--iconfont;
+                    margin-right: 0.6rem;
+                    font-size: 1.4em;
+                    color: #000000;
+                  }
+                  &.导演:before{
+                    content: $--i-director;
+                  }
+                  &.原片名:before{
+                    content: $--i-film-name;
+                  }
+                  &.编剧:before{
+                    content: $--i-writer;
+                  }
+                  &.演员:before{
+                    content: $--i-actors;
+                  }
+                  &.年份:before{
+                    content: $--i-write-time;
+                  }
+                  &.片长:before{
+                    content: $--i-film-len;
+                  }
+                  &.国家:before{
+                    content: $--i-country;
+                  }
+                }
+                > span{
+                  color: white;
+                  font-size: 0.8rem;
+                  padding: 0.2rem 0.4rem;
+                  flex-shrink: 0;
+                  word-break: break-all;
+                  width: calc(100% - 7.66rem);
+                }
+              }
+            }
+          }
+          > .expl{
+            margin: 1rem 0;
+            width: 90%;
+            flex-direction: column;
+            align-items: flex-start;
+            position: relative;
+            box-shadow: 0 0 0.6rem rgba(0, 0, 0, 0.5);
+            background: white;
+            &:before{
+              content: '';
+              position: absolute;
+              top: 0;
+              left: 0;
+              height: 100%;
+              width: 1.5rem;
+              background: linear-gradient(90deg, #656565, #656565, #6f6f6f);
+            }
+            > span{
+              padding: 1rem 1rem 1rem 3rem;
+              font-size: 0.88rem;
+              line-height: 1.5rem;
+              word-break: break-word;
+              white-space: pre-wrap;
+            }
+          }
         }
       }
       > .the-history{
         > .list{
+          flex-wrap: wrap;
+          width: 90%;
+          padding-bottom: 1rem;
+          @include phone{
+            width: 100%;
+          }
+          > a{
+            margin: 4.5rem 2rem 0 2rem;
+            text-decoration: none;
+            width: 15rem;
+            height: 10rem;
+            @include phone{
+              width: calc(50% - 1rem);
+              margin: 4.5rem 0.5rem 0 0.5rem;
+            }
+            &:hover{
+              >.plank>.lean{
+                transform: rotate(-10deg);
+                color: red;
+              }
+            }
+            >.plank{
+              position: relative;
+              flex-direction: column;
+              width: 100%;
+              height: 100%;
+              border: 1px solid black;
+              >.lean{
+                width: 100%;
+                height: 1rem;
+                position: absolute;
+                left: -1px;
+                top: calc(-1rem - 2px);
+                transform-origin: left bottom;
+                transform: rotate(0deg);
+                transition: transform .15s linear;
+                background: repeating-linear-gradient(45deg, white 0,white 1rem,black 1rem,black 2rem);
+                border: 1px solid black;
+                color: black;
+                &:before{
+                  position: absolute;
+                  bottom: 110%;
+                  left: 0;
+                  width: 100%;
+                  text-align: center;
+                  @include text-overflow(1);
+                  content: attr(title);
+                  font-size: 0.95rem;
+                }
+              }
+              >.horizon{
+                width: 100%;
+                height: 1rem;
+                background: repeating-linear-gradient(-45deg, white 0.5rem, white 1.5rem, black 1.5rem, black 2.5rem);
+                border-bottom: 1px solid black;
+              }
+              >.img{
+                width: 100%;
+                height: calc(100% - 1rem);
+                >img{
+                  background: #2f2f2f;
+                  width: 100%;
+                  height: 100%;
+                  object-fit: contain;
+                }
+              }
+            }
+          }
         }
       }
     }
   }
 }
+@include show-more

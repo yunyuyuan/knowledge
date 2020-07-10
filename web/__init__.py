@@ -20,12 +20,12 @@ def save_config():
 
 from flask import Flask
 
-from views.top import bp as bp1
-from views.words import bp as bp2
-from views.book import bp as bp3
-from views.film import bp as bp4
-from views.api import bp as bp5
-from views.backstage import bp as bp6
+from web.top import bp as bp1
+from web.words import bp as bp2
+from web.book import bp as bp3
+from web.film import bp as bp4
+from web.api import bp as bp5
+from web.backstage import bp as bp6
 
 def create_app(app: Flask):
     # session过期时间

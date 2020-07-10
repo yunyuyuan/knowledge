@@ -1,9 +1,10 @@
 <template>
     <div id="-vue-words-detail">
         <del class="back" @click="go_back"></del>
-        <div class="the-id">
+        <button class="del_item" v-show="!is_add" @click="del_item">删除</button>
+        <a class="the-id" :href="'/words'+(is_add?'':'?id='+cal_theId)" target="_blank">
             ID:<b>{{cal_theId}}</b>
-        </div>
+        </a>
         <div class="words">
             <auto-textarea @event="get_words_text" :value="old_detail.nm" placeholder="句子"></auto-textarea>
         </div>
@@ -102,8 +103,11 @@
                         vue_.old_detail = $.extend(true, {}, data);
                         vue_.sound_name = data.sound;
                         vue_.sound_path = '/static/mp3/'+data.sound;
-                    }, ()=>{
-                        head_pendant.toggle_loading(false);
+                    }, {
+                        complete: ()=>{
+                            head_pendant.toggle_loading(false);
+                        },
+                        cancel: true
                     })
                 }
             },
@@ -148,13 +152,32 @@
                 }, (data)=>{
                     head_pendant.pop_data({state: 'suc', msg: (vue_.is_add?'添加':'修改')+'成功'});
                     if (vue_.is_add){
-                        vue_.$router.push({name: 'book_detail', params: {theId: data.id}});
+                        vue_.$router.push({name: 'words_detail', params: {theId: data.id}});
                     }
                     vue_.fetch_data()
-                }, ()=>{
-                    btn.completed();
+                }, {
+                    complete: ()=>{
+                        btn.completed();
+                    },
+                    cancel: true
                 })
-            }
+            },
+            del_item (){
+                if (!confirm('确定删除?')) return;
+                let vue_ = this;
+                let id = this.$route.params.theId;
+                axios_pre({
+                    url: '/b/del_item',
+                    method: 'post',
+                    data: {
+                        what: 'words',
+                        id: id
+                    }
+                }, (data)=>{
+                    head_pendant.pop_data({state: 'suc', msg: '删除成功'});
+                    vue_.go_back()
+                })
+            },
         }
     }
 </script>

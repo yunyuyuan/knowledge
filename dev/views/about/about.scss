@@ -1,3 +1,104 @@
 @import "views/public";
 #app{
+  top: $head-height + 1rem;
+  >.about{
+    width: 100%;
+    max-width: 66rem;
+    position: relative;
+    left: 0;
+    top: 0;
+    flex-direction: column;
+    >.head{
+      width: 100%;
+      margin: 0.5rem 0 2rem 0;
+      justify-content: center;
+      >img{
+        width: 2.5rem;
+        height: 2.5rem;
+        object-fit: contain;
+        border-radius: 0.2rem;
+        margin-right: 1rem;
+      }
+      >b{
+        font-size: 1.2rem;
+        letter-spacing: 0.1rem;
+        color: white;
+      }
+    }
+    >.txt{
+      width: 60%;
+      padding: 1rem;
+      background: #ffffffd6;
+      border-radius: 0.25rem;
+      position: relative;
+      >del,>span{
+        white-space: pre-wrap;
+        font-size: 0.95rem;
+      }
+      >del{
+        opacity: 0;
+      }
+      >span{
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+      }
+    }
+    >.thanks{
+      width: 100%;
+      margin: 2rem 0 1rem 0;
+      background: rgba(47, 47, 47, 0.92);
+      flex-direction: column;
+      border-radius: 0.3rem;
+      >span{
+        color: white;
+        font-size: 1.05rem;
+        display: flex;
+        margin: 1rem 0;
+        align-items: center;
+        padding: 0.5rem 2rem;
+        border: 1px solid white;
+        border-radius: 0.6rem;
+        &:before{
+          font-family: $--iconfont;
+          content: $--i-flower;
+          font-size: 1.8rem;
+          margin-right: 0.6rem;
+        }
+      }
+      >div{
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        >div{
+          margin: 0.8rem 2rem;
+          font-size: 0.95rem;
+          &:before{
+            content: '';
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            border: 2px solid white;
+            background: #5f6bff;
+            margin-right: 1.5rem;
+            box-shadow: 0 0 0.6rem white;
+            flex-shrink: 0;
+          }
+          >img{
+            width: 2.4rem;
+            height: 2.4rem;
+            object-fit: cover;
+          }
+          >span{
+            color: white;
+            margin: 0 1rem 0 0.5rem;
+          }
+          >a{
+            color: #68eaff;
+            font-size: 0.988rem;
+          }
+        }
+      }
+    }
+  }
 }

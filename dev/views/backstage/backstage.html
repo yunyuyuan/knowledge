@@ -28,6 +28,9 @@
             <router-link :to="{name: 'book'}" class="book">书籍</router-link>
             <router-link :to="{name: 'film'}" class="film">影视</router-link>
             <router-link :to="{name: 'examine'}" class="examine">审核</router-link>
+            <a href="/" class="to-home" title="主页">
+                <img src="/static/img/favicon.png"/>
+            </a>
         </div>
         <div class="content">
             <b class="fixed-head" :class="at.name">{{ at.s }}</b>

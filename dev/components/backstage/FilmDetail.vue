@@ -1,12 +1,13 @@
 <template>
     <div id="-vue-film-detail">
         <del class="back" @click="go_back"></del>
+        <button class="del_item" v-show="!is_add" @click="del_item">删除</button>
         <a class="the-id" :href="'/film'+(is_add?'':'?id='+cal_theId)" target="_blank">
             ID:<b>{{cal_theId}}</b>
         </a>
         <div class="body">
             <auto-textarea class="name" placeholder="影名" @event="get_name" :value="detail.nm"></auto-textarea>
-            <div class="cover" onclick="this.querySelector('input').click()">
+            <div class="cover" onclick="this.querySelector('input').click()" title="选择封面">
                 <img v-show="cover_url || cover_path" :src="cover_url || cover_path"/>
                 <div v-show="!cover_file && !cover_path">
                     <span>上传封面</span>
@@ -183,8 +184,11 @@
                         vue_.detail = data;
                         vue_.old_detail = $.extend(true, {}, data);
                         vue_.cover_path = '/static/img/film/'+data.cover;
-                    }, ()=>{
-                        head_pendant.toggle_loading(false);
+                    }, {
+                        complete: ()=>{
+                            head_pendant.toggle_loading(false);
+                        },
+                        cancel: true
                     })
                 }
             },
@@ -318,8 +322,27 @@
                         vue_.$router.push({name: 'film_detail', params: {theId: data.id}});
                     }
                     vue_.fetch_data()
-                }, ()=>{
-                    btn.completed();
+                }, {
+                    complete: ()=>{
+                        btn.completed();
+                    },
+                    cancel: true
+                })
+            },
+            del_item (){
+                if (!confirm('确定删除?')) return;
+                let vue_ = this;
+                let id = this.$route.params.theId;
+                axios_pre({
+                    url: '/b/del_item',
+                    method: 'post',
+                    data: {
+                        what: 'film',
+                        id: id
+                    }
+                }, (data)=>{
+                    head_pendant.pop_data({state: 'suc', msg: '删除成功'});
+                    vue_.go_back()
                 })
             },
             go_back (){

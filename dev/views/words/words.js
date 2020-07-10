@@ -40,8 +40,10 @@ $(()=> {
                 } else {
                     location.href = '/words'
                 }
-            }, ()=>{
-                vue_.fetch_history()
+            }, {
+                complete: ()=>{
+                    vue_.fetch_history()
+                }
             });
         },
         methods: {
@@ -58,8 +60,10 @@ $(()=> {
                 }, (data)=>{
                     vue_.history = data;
                     vue_.fetched_list = true;
-                }, ()=>{
-                    head_pendant.toggle_loading(false)
+                }, {
+                    complete: ()=> {
+                        head_pendant.toggle_loading(false)
+                    }
                 })
             },
             turn_page (p){

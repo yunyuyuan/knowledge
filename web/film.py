@@ -6,7 +6,7 @@ from time import time
 from flask import Blueprint, render_template, request
 from pymysql import escape_string
 
-from views.util import inject_conn, gen_response, static_path
+from web.util import inject_conn, gen_response, static_path
 
 bp = Blueprint('film', __name__, url_prefix='/film')
 

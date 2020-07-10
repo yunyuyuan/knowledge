@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <link rel="shortcut icon" href="/static/img/favicon.png" type="image/png">
     <% for(let idx in htmlWebpackPlugin.files.js){ %>
     <script src="<%= htmlWebpackPlugin.files.js[idx] %>"></script>
     <% } %>
@@ -20,6 +22,21 @@
     <div id="app" v-cloak>
         {% block content %}
         {% endblock %}
+        <footer>
+            <img src="/static/img/favicon.png"/>
+            <div class="base">
+                <div>
+                    <a href="https://github.com/yunyuyuan" class="github" target="_blank"></a>
+                    <a href="https://space.bilibili.com/204446485" class="bilibili" target="_blank"></a>
+                    <a href="http://wpa.qq.com/msgrd?v=3&uin=1607439239&site=qq&menu=yes" class="qq" target="_blank"></a>
+                </div>
+                <span>Copyright © 2020 <b>yunyuyuan</b><br> All Right Reserve</span>
+            </div>
+            <div class="right">
+                <a class="blog" href="https://blog.phyer.cn" target="_blank">博客</a>
+                <a class="beian" href="http://beian.miit.gov.cn/" target="_blank"><span>鄂ICP备19031393号</span></a>
+            </div>
+        </footer>
     </div>
 </body>
 </html>

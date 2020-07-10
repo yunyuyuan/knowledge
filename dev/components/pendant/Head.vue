@@ -1,5 +1,5 @@
 <template>
-    <header class="head">
+    <header class="head" :class="{'only': $props.only_util===1}">
         <button class="menu -vue-head-menu" :class="{'opened': menu_open}" @click="toggle_menu">
           <svg viewBox="0 0 100 100">
             <path class="line line1" d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058" />
@@ -8,7 +8,9 @@
           </svg>
         </button>
         <div class="menu-btn">
-            <a v-for="item in btns" :class="item.href" :href="'/'+item.href">{{item.name}}</a>
+            <a v-for="item in btns" :class="item.href||'home'" :href="'/'+item.href">
+                <img v-if="!item.href" src="/static/img/favicon.png"/>
+                {{item.name}}</a>
         </div>
         <div class="util -vue-head-util" :class="{'opened': util_open}" @click="toggle_util">
             <div></div>
@@ -29,13 +31,14 @@
     import Headroom from 'headroom.js'
     export default {
         name: "Head",
+        props: ['only_util'],
         data (){
             return {
                 menu_open: false,
                 util_open: false,
                 btns: [
                     {name: '首页', href: ''},
-                    {name: '英语', href: 'words'},
+                    {name: '句子', href: 'words'},
                     {name: '书籍', href: 'book'},
                     {name: '影视', href: 'film'}
                 ]
@@ -69,11 +72,11 @@
                                 document.removeEventListener('click', blur);
                                 // 点击的是按钮
                                 while (true){
-                                    el = el.parentElement;
-                                    if (!el) break;
                                     if (el.classList && el.classList.contains('-vue-head-'+(is_menu?'menu':'util'))){
                                         return
                                     }
+                                    el = el.parentElement;
+                                    if (!el) break;
                                 }
                                 if (is_menu) vue_.toggle_menu();
                                 else vue_.toggle_util()
@@ -112,6 +115,17 @@
         }
         &:hover{
             background: rgba(255, 255, 255, 0.85);
+        }
+        &.only{
+            background: none;
+            border: none;
+            justify-content: flex-end;
+            &:hover{
+                background: none;
+            }
+            >.menu,>.menu-btn{
+                display: none;
+            }
         }
         >.menu{
             margin: 0.4rem 0 0.4rem 0.4rem;
@@ -181,6 +195,12 @@
                 //        content: #{'$--i-'$s};
                 //    }
                 //}
+                &.home >img {
+                    width: 1.6rem;
+                    height: 1.6rem;
+                    border-radius: 0.2rem;
+                    margin-right: 0.8rem;
+                }
                 &.words:before {
                     content: $--i-words;
                 }

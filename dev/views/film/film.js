@@ -14,6 +14,10 @@ $(()=> {
             onePage_showCount: 10,
             now: 1,
             info: {},
+            now_img: null,
+            has_more: false,
+            show_more: false,
+            show_big_img: false,
             history: {
                 count: 0,
                 list: []
@@ -41,6 +45,13 @@ $(()=> {
                     vue_.info = data;
                     vue_.fetched_info = true;
                     document.title = '影视-' + data.nm;
+                    let span = vue_.$el.querySelector('.base-info>.cover>.summary>span');
+                    let interval = setInterval(()=>{
+                        if (span.clientHeight>0) {
+                            vue_.has_more = span.scrollHeight > span.clientHeight;
+                            clearInterval(interval)
+                        }
+                    }, 100);
                     // 轮播
                     let posters = $(this.$el).find('.posters');
                     let contain = posters.find('.contain');
@@ -66,8 +77,10 @@ $(()=> {
                 } else {
                     location.href = '/film'
                 }
-            }, ()=>{
-                this.fetch_list()
+            }, {
+                complete: ()=>{
+                    vue_.fetch_list()
+                }
             })
         },
         methods: {
@@ -84,9 +97,28 @@ $(()=> {
                 }, (data)=>{
                     vue_.history = data;
                     vue_.fetched_list = true;
-                }, ()=>{
-                    head_pendant.toggle_loading(false)
+                }, {
+                    complete: ()=>{
+                        head_pendant.toggle_loading(false)
+                    }
                 })
+            },
+            showMore (){
+                this.show_more = true;
+                this.add_handel('show_more')
+            },
+            showBigImg (e){
+                this.show_big_img = e.target.src;
+                this.add_handel('show_big_img')
+            },
+            add_handel (what){
+                function handel(e){
+                    if (e.target === document.getElementById('show-more')){
+                        vue_[what] = false;
+                        document.removeEventListener('click', handel)
+                    }
+                }
+                document.addEventListener('click', handel)
             },
             turn_page (p){
                 this.now = p;

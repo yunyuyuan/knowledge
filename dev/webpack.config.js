@@ -15,6 +15,8 @@ module.exports = {
         book: './views/book/book.js',
         film: './views/film/film.js',
         backstage: './views/backstage/backstage.js',
+        iSay: './views/iSay/iSay.js',
+        about: './views/about/about.js',
     },
     output: {
         filename: 'js/[name].[chunkhash].js',
@@ -53,7 +55,7 @@ module.exports = {
             debug: debug,
             inject: false
         }),
-        ...genHtmlPlugin('home', 'words', 'book', 'film', 'backstage', 'about', 'i-say'),
+        ...genHtmlPlugin('home', 'words', 'book', 'film', 'backstage', 'about', 'iSay'),
     ],
     mode: 'development',
     optimization: {

@@ -77,6 +77,120 @@ button{
   }
 }
 
+footer{
+  width: 100%;
+  padding: 1rem 0 0.4rem 0;
+  background: rgba(39, 40, 44, 0.88);
+  display: flex;
+  align-items: center;
+  margin-top: auto;
+  @include phone{
+    flex-wrap: wrap;
+  }
+  >img{
+    margin: 0 1rem 0 2rem;
+    width: 3.6rem;
+    height: 3.6rem;
+    border-radius: 0.5rem;
+    @include phone{
+      margin: 0 1rem;
+    }
+  }
+  >.base{
+    flex-direction: column;
+      @include phone{
+        width: calc(100% - 5.6rem);
+      }
+    > div{
+      > a{
+        margin: 0 0.6rem;
+        text-decoration: none;
+        padding: 0.6rem;
+        border-radius: 50%;
+        &:hover{
+          background: #000000;
+        }
+        &:before{
+          font-family: $--iconfont;
+          color: white;
+          font-size: 1.4rem;
+        }
+        &.github:before{
+          content: $--i-github;
+        }
+        &.qq:before{
+          content: $--i-qq;
+        }
+        &.bilibili:before{
+          content: $--i-bilibili;
+        }
+      }
+    }
+    > span{
+      color: #a7a7a7;
+      font-size: 0.85rem;
+      line-height: 1.6rem;
+      > b{
+      }
+    }
+  }
+  >.right{
+    margin: 0 1rem 0 auto;
+    flex-direction: column;
+    height: 100%;
+    @include phone{
+      width: 100%;
+      height: unset;
+      flex-direction: row;
+      justify-content: center;
+    }
+    >.blog{
+      color: #dfdfdf;
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      @include phone{
+        margin: 0 1rem 0 0;
+      }
+      &:before{
+        content: '';
+        display: flex;
+        margin-right: 0.4rem;
+        width: 1.75rem;
+        height: 1.75rem;
+        border-radius: 0.2rem;
+        background-size: 100% 100%;
+        background-image: url("https://blog.phyer.cn/static/img/favicon.png");
+      }
+    }
+    >.blog:hover, >.beian:hover{
+        color: #ff8848;
+    }
+    >.beian{
+      color: #dedede;
+      font-size: 0.88rem;
+      margin: auto 0 1rem 0;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      @include phone{
+        margin: 0;
+      }
+      >span{
+        text-decoration: underline;
+      }
+      &:before{
+        margin-right: 0.6rem;
+        font-family: $--iconfont;
+        content: $--i-beian;
+        color: #00ffdc;
+        font-size: 1.4rem;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
 
 @keyframes spin {
     0%{
@@ -94,5 +208,15 @@ button{
 }
 .bounce-fade-enter-to{
     top: 0;
+    opacity: 1;
+}
+
+.fade-enter-active,.fade-leave-active{
+    transition: opacity .25s linear;
+}
+.fade-enter, .fade-leave-to{
+    opacity: 0.3;
+}
+.fade-enter-to, .fade-leave{
     opacity: 1;
 }

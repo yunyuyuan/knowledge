@@ -71,7 +71,7 @@
         }
       }
     }
-    >a{
+    >a:not(.to-home){
       color: #ffffff;
       text-decoration: none;
       width: 100%;
@@ -132,6 +132,18 @@
       }
       &.examine:before{
         content: $--i-examine;
+      }
+    }
+    >a.to-home{
+      margin: auto 0 1rem 0;
+      >img{
+        border: 1px solid transparent;
+        border-radius: 0.25rem;
+        width: 2rem;
+        height: 2rem;
+        &:hover{
+          border-color: white;
+        }
       }
     }
   }
@@ -209,6 +221,26 @@
           flex-direction: column;
       }
     }
+    button.del_item{
+      position: absolute;
+      right: 0.1rem;
+      top: 0.1rem;
+      background: #ff4850;
+      color: white;
+      font-size: 0.9rem;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      &:before{
+        font-family: $--iconfont;
+        content: $--i-del;
+        margin-right: 0.4rem;
+        font-size: 1.2rem;
+      }
+      &:hover{
+        background: #ff2a2c;
+      }
+    }
     del.back{
       position: absolute;
       padding: 0.2rem 0.8rem;
@@ -245,4 +277,7 @@
       }
     }
   }
+}
+footer{
+  display: none !important;
 }

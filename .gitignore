@@ -1,14 +1,6 @@
 /dev/node_modules/
 /.idea/
 /static/js_lib/
-<<<<<<< HEAD
-/static/out/css/
-/static/out/js/
-/templates/
 
 /__pycache__/
-/views/__pycache__/
-=======
-/__pycache__/
-/views/__pycache__/
->>>>>>> origin/master
+/web/__pycache__/

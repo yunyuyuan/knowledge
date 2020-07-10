@@ -4,7 +4,7 @@ from os.path import sep
 from flask import Blueprint, render_template, request
 from pymysql import escape_string
 
-from views.util import gen_response, inject_conn, static_path
+from web.util import gen_response, inject_conn, static_path
 
 bp = Blueprint('words', __name__, url_prefix='/words')
 

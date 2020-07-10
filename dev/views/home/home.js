@@ -1,10 +1,12 @@
 import './home.scss'
 import $ from '@vendor/jquery_vendor';
 import Vue from 'vue'
+import TheHead from '@components/pendant/Head.vue'
 
 $(()=> {
     let vue_ = new Vue({
         el: '#app',
+        components: {TheHead},
         data: {
             old_tip: '',
             tip: '',
@@ -19,7 +21,7 @@ $(()=> {
             }, (data)=>{
                 vue_.old_tip = data[0][1];
                 vue_.btns = data.slice(1);
-            }, false)
+            })
         },
         methods: {
             enter (s) {

@@ -26,5 +26,9 @@
             "film"
         ]
     ],
+    "about": {
+        "say": "nothing",
+        "thanks": []
+    },
     "pwd": "111"
 }

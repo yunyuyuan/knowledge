@@ -5,10 +5,28 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: $line;
   word-break: break-all;
+  white-space: pre-wrap;
+}
+@mixin phone {
+  @media screen and (max-width: 768px){
+    @content
+  }
+}
+@mixin pc{
+  @media screen and (min-width: 768px){
+    @content
+  }
 }
 
 $--iconfont: 'iconfont';
 
+$--i-beian: '\e048';
+$--i-qq: '\e047';
+$--i-github: '\e046';
+$--i-bilibili: '\e045';
+$--i-flower: '\e044';
+$--i-country: '\e043';
+$--i-film-len: '\e042';
 $--i-examine: '\e041';
 $--i-actors: '\e040';
 $--i-director: '\e039';
@@ -57,3 +75,38 @@ $backstage-menu-index: 99;
 
 $loading-index: 101;
 $popup-index: 100;
+
+@mixin show-more{
+  #show-more{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    > span{
+      width: calc(80% - 2rem);
+      height: calc(80% - 2rem);
+      @include phone{
+        width: calc(100% - 2rem);
+      }
+      font-size: 0.92rem;
+      word-break: break-all;
+      white-space: pre-wrap;
+      background: white;
+      padding: 1rem;
+      border-radius: 0.6rem;
+      box-shadow: 0 0 0.8rem rgba(255, 255, 255, 0.4);
+      overflow: auto;
+    }
+    >img{
+      width: calc(80% - 2rem);
+      height: calc(80% - 2rem);
+      object-fit: contain;
+      background: white;
+      box-shadow: 0 0 0.8rem rgba(255, 255, 255, 0.4);
+    }
+    z-index: 999;
+  }
+}

@@ -1,6 +1,6 @@
 {% extends 'plugin/header.html' %}
 {% block head %}
-    <title>我说</title>
+    <title>我有说的</title>
     <% for(let idx in htmlWebpackPlugin.files.js){ %>
     <script src="<%= htmlWebpackPlugin.files.js[idx] %>"></script>
     <% } %>
@@ -10,5 +10,7 @@
 {% endblock %}
 
 {% block content %}
-    <img class="bg" src="/static/img/b_bg.jpg"/>
+    <img class="bg" src="/static/img/i-say_bg.jpg"/>
+    <the-head></the-head>
+    <b>该功能尚未完善</b>
 {% endblock %}

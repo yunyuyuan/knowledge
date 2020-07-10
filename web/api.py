@@ -1,11 +1,9 @@
-from time import sleep
-
 from flask import Blueprint, session
 from pymysql import escape_string
 from pymysql.cursors import DictCursor
 
-from views import config
-from views.util import dict_post_data, gen_response, data_format, check_login, inject_conn
+from web import config
+from web.util import dict_post_data, gen_response, data_format, check_login, inject_conn
 
 bp = Blueprint('api', __name__, url_prefix='/api')
 
@@ -17,6 +15,12 @@ def login():
     if is_equal:
         session['login'] = True
     return gen_response('suc' if is_equal else 'err', [])
+
+# 获取小东西
+@bp.route('/get_something/<what>', methods=['post'])
+def get_something(what):
+    if what == 'tip':
+        return gen_response('suc', config['tip'])
 
 # 获取列表(用户)
 @bp.route('/get_list_simple', methods=['post'])
@@ -76,3 +80,9 @@ def util_get_detail(conn):
     else:
         cursor.execute('select nm,date_format(c_tm, "%s") as c_tm,date_format(m_tm, "%s") as m_tm,expl,%s from %s order by id desc limit 0,1' % (data_format, data_format, args, what))
     return gen_response('suc', cursor.fetchone())
+
+
+# 关于
+@bp.route('/get_about', methods=['post'])
+def get_about():
+    return gen_response('suc', config['about'])

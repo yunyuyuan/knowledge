@@ -124,8 +124,11 @@
                     }
                 }, (data)=>{
                     vue_.list_data = data;
-                }, ()=>{
-                    head_pendant.toggle_loading(false);
+                }, {
+                    complete: ()=>{
+                        head_pendant.toggle_loading(false);
+                    },
+                    cancel: true
                 })
             },
             turn_page (p){

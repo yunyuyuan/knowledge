@@ -1,14 +1,13 @@
 from flask import Blueprint, render_template, request
 
-from views import config
-from views.util import gen_response
+from web import config
+from web.util import gen_response
 
 bp = Blueprint('top', __name__, url_prefix='')
 
 @bp.route('/')
 def index():
     return render_template('home.html')
-
 
 # 获取首页信息
 @bp.route('/get_info', methods=['post'])
@@ -23,4 +22,4 @@ def about():
 # 我说
 @bp.route('/i-say')
 def i_say():
-    return render_template('i-say.html')
+    return render_template('iSay.html')

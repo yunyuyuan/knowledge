@@ -1,13 +1,19 @@
 @import "public";
 #app{
+  top: $head-height+1rem;
   >.top{
     width: 100%;
     position: relative;
-    top: $head-height+1rem;
     left: 0;
+    top: 0;
     flex-direction: column;
     align-items: flex-start;
     margin: 0 auto;
+    @include phone{
+      max-width: unset !important;
+      min-width: unset !important;
+      width: 100% !important;
+    }
     .c-m-time{
       margin: 0.5rem 0 0 auto;
       >span{

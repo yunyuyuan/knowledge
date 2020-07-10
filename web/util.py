@@ -13,7 +13,7 @@ import pymysql
 from DBUtils.PooledDB import PooledDB
 from flask import request, jsonify, session
 
-from views import config
+from web import config
 
 POOL = PooledDB(
     creator=pymysql,  # 使用链接数据库的模块

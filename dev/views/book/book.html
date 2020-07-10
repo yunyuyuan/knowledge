@@ -33,6 +33,12 @@
                         <div class="info">
                             <a>{{ info.author }}</a>
                             <p>{{ info.summary }}</p>
+                            <transition name="fade">
+                                <div id="show-more" v-show="show_more">
+                                    <span>{{ info.summary }}</span>
+                                </div>
+                            </transition>
+                            <button v-show="has_more" @click="showMore">更多</button>
                         </div>
                     </div>
                     <div class="info">

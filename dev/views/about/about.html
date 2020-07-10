@@ -10,5 +10,26 @@
 {% endblock %}
 
 {% block content %}
-    <img class="bg" src="/static/img/b_bg.jpg"/>
+    <img class="bg" src="/static/img/about_bg.jpg"/>
+    <the-head></the-head>
+    <div class="about">
+        <section class="head">
+            <img src="/static/img/favicon.png"/>
+            <b>关于本站</b>
+        </section>
+        <section class="txt">
+            <del>{{ total_say }}</del>
+            <span>{{ say }}</span>
+        </section>
+        <section class="thanks">
+            <span>致意</span>
+            <div>
+                <div v-for="item in thanks" :key="item.img">
+                    <img :src="item.img"/>
+                    <span>{{ item.expl }}</span>
+                    <a :href="item.href" target="_blank">{{ item.name }}</a>
+                </div>
+            </div>
+        </section>
+    </div>
 {% endblock %}

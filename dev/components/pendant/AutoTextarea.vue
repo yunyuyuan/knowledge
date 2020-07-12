@@ -29,8 +29,8 @@
                 // 减去paddingTop*2和borderWidth*2
                 let css = get_css(el);
                 el.style.height = parseInt(el.scrollHeight
-                    -parseFloat(css.paddingTop.replace('px', ''))*2
-                    -parseFloat(css.borderBottomWidth.replace('px', ''))*2)+'px';
+                    -(+css.paddingTop.replace('px', ''))*2
+                    -(+css.borderBottomWidth.replace('px', ''))*2)+'px';
                 this.$emit('event', this.text, this.$el);
             },
         }

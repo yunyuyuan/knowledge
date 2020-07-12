@@ -2,10 +2,16 @@
 #app{
   > .film{
     max-width: 70rem;
+    @include phone{
+      max-width: unset;
+      width: 100%;
+    }
     > .wrap{
+      width: 100%;
       margin: 0 auto;
       flex-direction: column;
       > .info{
+        width: 100%;
         flex-direction: column;
         > .posters{
           width: 60rem;
@@ -218,6 +224,7 @@
           padding-bottom: 1rem;
           @include phone{
             width: 100%;
+            justify-content: space-around;
           }
           > a{
             margin: 4.5rem 2rem 0 2rem;
@@ -226,6 +233,7 @@
             height: 10rem;
             @include phone{
               width: calc(50% - 1rem);
+              max-width: 16rem;
               margin: 4.5rem 0.5rem 0 0.5rem;
             }
             &:hover{

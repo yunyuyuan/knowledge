@@ -1,5 +1,5 @@
 from os import remove
-from os.path import sep
+from os.path import sep, exists
 from re import sub
 from time import time
 
@@ -40,7 +40,7 @@ def mdf_film(conn):
         cursor.execute('select cover from film where id=%d' % film_id)
         # 删除旧的
         old_path = cursor.fetchone()[0]
-        if old_path:
+        if old_path and exists(folder + old_path):
             remove(folder + old_path)
         ''' 加上时间戳 '''
         cover_filename = str(film_id) + '_' + str(int(time())) + '.' + file.content_type.replace('image/', '')
@@ -66,6 +66,7 @@ def mdf_film(conn):
     # 删除
     for i in poster_old:
         if i not in poster_new:
-            remove(folder + i)
+            if exists(folder + i):
+                remove(folder + i)
     cursor.execute('update film set posters="%s" where id=%d' % (escape_string(str(poster_new).replace("'", '"')), film_id))
     return re

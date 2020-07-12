@@ -1,5 +1,5 @@
 from os import remove
-from os.path import sep
+from os.path import sep, exists
 from time import time
 
 from flask import Blueprint, render_template, request
@@ -49,7 +49,7 @@ def mdf_book(conn):
         # 删除旧的
         old_path = cursor.fetchone()[0]
         folder = static_path + 'img' + sep + 'book' + sep
-        if old_path:
+        if old_path and exists(folder + old_path):
             remove(folder + old_path)
         ''' 加上时间戳 '''
         cover_filename = str(book_id) + '_' + str(int(time())) + '.' + file.content_type.replace('image/', '')

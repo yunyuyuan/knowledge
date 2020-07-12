@@ -85,27 +85,28 @@ $popup-index: 100;
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
     justify-content: center;
-    > span{
+    >span,>img{
       width: calc(80% - 2rem);
       height: calc(80% - 2rem);
-      @include phone{
-        width: calc(100% - 2rem);
-      }
+      background: white;
+      box-shadow: 0 0 0.8rem rgba(255, 255, 255, 0.4);
+    }
+    > span{
       font-size: 0.92rem;
       word-break: break-all;
       white-space: pre-wrap;
-      background: white;
       padding: 1rem;
       border-radius: 0.6rem;
-      box-shadow: 0 0 0.8rem rgba(255, 255, 255, 0.4);
       overflow: auto;
+      @include phone{
+        width: calc(100% - 2rem);
+      }
     }
     >img{
-      width: calc(80% - 2rem);
-      height: calc(80% - 2rem);
       object-fit: contain;
-      background: white;
-      box-shadow: 0 0 0.8rem rgba(255, 255, 255, 0.4);
+      @include phone{
+        width: 100%;
+      }
     }
     z-index: 999;
   }

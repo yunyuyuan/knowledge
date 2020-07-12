@@ -2,15 +2,15 @@
 #app{
   > .book{
     min-width: 40rem;
-    max-width: 60rem;
+    max-width: 66rem;
     > .body{
       width: 100%;
       flex-direction: column;
       > .latest{
         width: 100%;
-        flex-wrap: wrap;
-        justify-content: space-around;
         position: relative;
+        flex-wrap: wrap;
+        overflow-x: hidden;
         > .name{
           width: 100%;
           justify-content: center;
@@ -43,7 +43,7 @@
           padding-left: 3rem;
           background: #f3f3f3;
           @include phone{
-            width: 100%;
+            width: calc(100% - 3rem);
             margin-bottom: 1rem;
           }
           > .book{
@@ -154,7 +154,7 @@
                 color: #b400ff;
               }
             }
-            >button{
+            > button{
               position: absolute;
               right: 0.5rem;
               bottom: 0;
@@ -184,7 +184,7 @@
           box-shadow: 0 0 0.8rem rgba(0, 0, 0, 0.3);
           padding: 0 0.8rem;
           @include phone{
-            width: 100%;
+            width: calc(100% - 1.6rem);
           }
           > div{
             width: 95%;
@@ -215,18 +215,24 @@
               //    }
               //  }
               //}
-              &.出版社:before {
-                content: $--i-publisher; }
-              &.年份:before {
-                content: $--i-write-time; }
-              &.原作名:before {
-                content: $--i-book-name; }
-              &.译者:before {
-                content: $--i-translate; }
-              &.字数:before {
-                content: $--i-page-num; }
-              &.ISBN:before {
-                content: $--i-barcode; }
+              &.出版社:before{
+                content: $--i-publisher;
+              }
+              &.年份:before{
+                content: $--i-write-time;
+              }
+              &.原作名:before{
+                content: $--i-book-name;
+              }
+              &.译者:before{
+                content: $--i-translate;
+              }
+              &.字数:before{
+                content: $--i-page-num;
+              }
+              &.ISBN:before{
+                content: $--i-barcode;
+              }
             }
             > span{
               font-size: 0.8rem;

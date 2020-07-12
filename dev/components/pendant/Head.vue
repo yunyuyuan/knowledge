@@ -178,6 +178,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                word-break: keep-all;
                 &:not(:last-of-type){
                     margin-bottom: 0.6rem;
                 }
@@ -270,6 +271,7 @@
                 font-size: 1rem;
                 display: flex;
                 align-items: center;
+                word-break: keep-all;
                 &:hover{
                     background: #a2ffba;
                 }

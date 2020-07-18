@@ -7,6 +7,7 @@
             <div class="short"></div>
             <div class="long"></div>
         </div>
+        <audio></audio>
     </div>
 </template>
 
@@ -17,22 +18,22 @@
         data (){
             return {
                 playing: false,
-                audio: null
             }
         },
         methods: {
             toggle_play (){
-                let vue_ = this;
+                let vue_ = this,
+                    audio = this.$el.querySelector('audio');
                 if (this.$props.src==='') return;
+                if (!audio.src) audio.src=vue_.$props.src;
                 this.playing = !this.playing;
                 if (this.playing){
-                    this.audio = new Audio(this.$props.src);
-                    this.audio.addEventListener('ended', ()=>{
+                    audio.addEventListener('ended', ()=>{
                         vue_.playing = false;
                     });
-                    this.audio.play()
+                    audio.play();
                 }else{
-                    this.audio.pause();
+                    audio.pause();
                     vue_.playing = false;
                 }
             }
@@ -89,6 +90,9 @@
                     animation: bounce-long .5s linear infinite;
                 }
             }
+        }
+        >audio{
+            /*display: none;*/
         }
     }
 </style>

@@ -21,6 +21,8 @@ def login():
 def get_something(what):
     if what == 'tip':
         return gen_response('suc', config['tip'])
+    elif what == 'views':
+        return gen_response('suc', config['views'])
 
 # 获取列表(用户)
 @bp.route('/get_list_simple', methods=['post'])

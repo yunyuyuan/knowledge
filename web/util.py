@@ -1,7 +1,5 @@
+import datetime
 from os import getcwd, sep
-
-from pymysql import escape_string
-from pymysql.cursors import DictCursor
 
 static_path = getcwd() + sep + 'static' + sep
 
@@ -11,9 +9,9 @@ from functools import wraps
 
 import pymysql
 from DBUtils.PooledDB import PooledDB
-from flask import request, jsonify, session
+from flask import request, jsonify, session, make_response
 
-from web import config
+from web import config, save_config
 
 POOL = PooledDB(
     creator=pymysql,  # 使用链接数据库的模块
@@ -47,6 +45,22 @@ def dict_post_data():
 # post返回json
 def gen_response(state, data):
     return jsonify({'state': state, 'data': data})
+
+# 检查user-agent
+def check_agent(func):
+    @wraps(func)
+    def inner(*args, **kwargs):
+        if 'User-Agent' in request.headers or 'user-agent' in request.headers:
+            re = make_response(func(*args, **kwargs))
+            if 'views' not in request.cookies:
+                config['views'] += 1
+                save_config()
+                expire = (datetime.datetime.now()+datetime.timedelta(days=3650)).timestamp()
+                re.set_cookie('views', str(config['views']), expire, expire)
+            return re
+        else:
+            return 'illegal request'
+    return inner
 
 # 检查是否管理员登录
 def check_login(func):

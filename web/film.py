@@ -6,11 +6,12 @@ from time import time
 from flask import Blueprint, render_template, request
 from pymysql import escape_string
 
-from web.util import inject_conn, gen_response, static_path
+from web.util import inject_conn, gen_response, static_path, check_agent
 
 bp = Blueprint('film', __name__, url_prefix='/film')
 
 @bp.route('/')
+@check_agent
 def index():
     return render_template('film.html')
 

@@ -59,6 +59,14 @@ $(() => {
             complete(res)
         });
     };
+    // views
+    document.querySelector('footer>.views b:first-of-type').innerText = document.cookie.replace(/.*views=(\d+).*/, '$1');
+    axios_pre({
+        url: '/api/get_something/views',
+        method: 'post'
+    }, (data)=>{
+        document.querySelector('footer>.views b:last-of-type').innerText = data;
+    });
     // 获取css计算属性
     window.get_css = (el) => {
         return (el.currentStyle) ? el.currentStyle : getComputedStyle(el)
@@ -74,5 +82,4 @@ $(() => {
         }
         return re;
     }
-    // 显示放大
 });

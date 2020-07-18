@@ -5,11 +5,12 @@ from pymysql.cursors import DictCursor
 from flask import Blueprint, render_template, session
 
 from web import config, save_config
-from web.util import dict_post_data, check_login, gen_response, inject_conn, static_path
+from web.util import dict_post_data, check_login, gen_response, inject_conn, static_path, check_agent
 
 bp = Blueprint('backstage', __name__, url_prefix='/b')
 
 @bp.route('/')
+@check_agent
 def index():
     return render_template('backstage.html', login='login' in session)
 

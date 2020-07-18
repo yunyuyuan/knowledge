@@ -83,13 +83,12 @@ footer{
   padding: 1rem 0 0.4rem 0;
   background: rgba(39, 40, 44, 0.88);
   display: flex;
-  align-items: center;
   margin-top: auto;
   @include phone{
     flex-wrap: wrap;
   }
   >img{
-    margin: 0 1rem 0 2rem;
+    margin: auto 1rem auto 2rem;
     width: 3.6rem;
     height: 3.6rem;
     border-radius: 0.5rem;
@@ -135,19 +134,31 @@ footer{
       }
     }
   }
+  >.views{
+    margin: 0 auto;
+    >span{
+      color: #47d2bf;
+      font-size: 0.88rem;
+      >b{
+        color: white;
+        margin: 0 0.4rem;
+        font-size: 1.2em;
+      }
+    }
+  }
   >.right{
-    margin: 0 1rem 0 auto;
+    margin: 0 1rem 0 0;
     flex-direction: column;
-    height: 100%;
+    justify-content: space-around;
     @include phone{
       width: 100%;
       height: unset;
       flex-direction: row;
       justify-content: center;
+      margin: 0.8rem 0 0 0;
     }
     >.blog{
       color: #dfdfdf;
-      margin-top: auto;
       display: flex;
       align-items: center;
       @include phone{
@@ -170,8 +181,8 @@ footer{
     >.beian{
       color: #dedede;
       font-size: 0.88rem;
-      margin: auto 0 1rem 0;
       display: flex;
+      margin: 0;
       align-items: center;
       text-decoration: none;
       @include phone{

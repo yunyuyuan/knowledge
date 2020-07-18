@@ -5,11 +5,12 @@ from os.path import sep, exists
 from flask import Blueprint, render_template, request
 from pymysql import escape_string
 
-from web.util import gen_response, inject_conn, static_path
+from web.util import gen_response, inject_conn, static_path, check_agent
 
 bp = Blueprint('words', __name__, url_prefix='/words')
 
 @bp.route('/')
+@check_agent
 def index():
     return render_template('words.html')
 
@@ -42,7 +43,7 @@ def mdf_words(conn):
         if old_path and exists(folder + old_path):
             remove(folder + old_path)
         # 加上时间戳
-        sound_filename = str(words_id) + '_' + str(int(time())) + '.' + file.content_type.replace('audio/', '')
+        sound_filename = str(words_id) + '_' + str(int(time())) + '.mp3'
         sound_path = folder + sound_filename
         # 存储并更新表
         file.save(sound_path)

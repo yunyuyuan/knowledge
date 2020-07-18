@@ -10,7 +10,7 @@
         </div>
         <div class="sound">
             <span>音频文件</span>
-            <button onclick="this.children[0].click()">{{sound_name===''?'未选择':sound_name}}<input @change="get_sound_file" type="file" accept="audio/*"/></button>
+            <button onclick="this.children[0].click()">{{sound_name===''?'未选择':sound_name}}<input @change="get_sound_file" type="file" accept="audio/mp3"/></button>
             <play-sound :src="sound_path" :size="1.2"></play-sound>
         </div>
         <div class="explain">

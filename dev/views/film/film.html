@@ -31,7 +31,8 @@
                         <div class="base-info">
                             <div class="cover">
                                 <b>{{ info.nm }}</b>
-                                <img :src="'/static/img/film/'+info.cover" @click="showBigImg"/>
+<!--                                <img :src="'/static/img/film/'+info.cover" @click="showBigImg"/>-->
+                                <img :src="'https://gitee.com/yunyuyuan/knowledge_img/raw/master/film/'+info.cover" @click="showBigImg"/>
                                 <div class="summary">
                                     <span>{{ info.summary }}</span>
                                     <button v-show="has_more" @click="showMore">更多</button>
@@ -69,7 +70,8 @@
                                 <div class="lean" :title="item.nm"></div>
                                 <div class="horizon"></div>
                                 <div class="img">
-                                    <img :src="'/static/img/film/'+item.cover"/>
+<!--                                    <img :src="'/static/img/film/'+item.cover"/>-->
+                                    <img :src="'https://gitee.com/yunyuyuan/knowledge_img/raw/master/film/'+item.cover"/>
                                 </div>
                             </div>
                         </a>

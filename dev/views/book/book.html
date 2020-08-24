@@ -26,7 +26,8 @@
                                 <b>{{ info.nm }}</b>
                             </div>
                             <div class="cov">
-                                <img :src="'/static/img/book/'+info.cover"/>
+<!--                                <img :src="'/static/img/book/'+info.cover"/>-->
+                                <img :src="'https://gitee.com/yunyuyuan/knowledge_img/raw/master/book/'+info.cover"/>
                             </div>
                             <div class="shadow"></div>
                         </div>
@@ -65,7 +66,8 @@
                         <a v-for="item in history.list" :key="item.id" :href="'?id='+item.id" :title="item.name"
                            onmouseenter="this.classList.remove('not-hover');this.classList.add('hover')"
                            onmouseleave="this.classList.remove('hover');this.classList.add('not-hover')">
-                            <div class="cover"><img :src="'/static/img/book/'+item.cover"/></div>
+<!--                            <div class="cover"><img :src="'/static/img/book/'+item.cover"/></div>-->
+                            <div class="cover"><img :src="'https://gitee.com/yunyuyuan/knowledge_img/raw/master/book/'+item.cover"/></div>
                             <div class="page"></div>
                             <div class="page_front_edge"
                                  :style="{width: tan_110*item.weight+'rem'}"></div>

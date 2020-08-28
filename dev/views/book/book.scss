@@ -11,6 +11,7 @@
         position: relative;
         flex-wrap: wrap;
         overflow-x: hidden;
+	justify-content: space-around;
         > .name{
           width: 100%;
           justify-content: center;

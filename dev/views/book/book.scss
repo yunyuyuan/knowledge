@@ -303,7 +303,6 @@
             > .page{
               background-color: #e0e0e0;
               opacity: 1;
-              -webkit-box-reflect: below 0 -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(30%, transparent), to(rgba(255, 255, 255, 0.2)));
               z-index: 4;
             }
             > .backcover{
@@ -312,7 +311,6 @@
               z-index: 2;
               background-color: #9e9e9e;
               box-shadow: 0 0 1px 0 rgba(0, 0, 0, .3);
-              -webkit-box-reflect: below 0 -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(30%, transparent), to(rgba(255, 255, 255, 0.3)));
             }
             > .cover{
               position: absolute;
@@ -320,7 +318,6 @@
               background-color: #FFF;
               z-index: 5;
               transition: all .15s ease-out;
-              -webkit-box-reflect: below 1px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(40%, transparent), to(rgba(255, 255, 255, 0.5)));
               -webkit-backface-visibility: hidden;
               transform: skew(0deg, 15deg);
               width: 7rem;
@@ -351,7 +348,6 @@
               background-color: #cfcfcf;
               transform-origin: left top;
               transform: skew(0deg, -20deg);
-              -webkit-box-reflect: below 0 -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(30%, transparent), to(rgba(255, 255, 255, 0.6)));
             }
             > .page_front_edge{
               left: 7rem;
@@ -361,7 +357,6 @@
             > .spine{
               margin-top: -0.025rem;
               background-color: #9e9e9e;
-              -webkit-box-reflect: below 0 -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(30%, transparent), to(rgba(255, 255, 255, 0.0)));
               box-shadow: 0 0 1px 0 rgba(0, 0, 0, .6);
               z-index: 2;
             }
